@@ -1,0 +1,59 @@
+{
+    "Navigation": {
+      "home": "Início",
+      "about": "Sobre",
+      "portfolio": "Portfólio"
+    },
+    "HomePage": {
+      "title": "Olá, eu sou o Matheus!",
+      "subtitle": "Desenvolvedor Full Stack",
+      "button": "Veja meu portfólio"
+    },
+    "About": {
+      "title": "Sobre",
+      "content": "Olá, eu sou o Matheus, desenvolvedor Full Stack. Atualmente estou cursando duas pós graduações Lato Sensu, uma em Desenvolvimento Full Stack e Cloud Computing e outra em Arquitetura e Projetos de Cloud Computing. Além disso, tenho experiência em desenvolvimento Web utilizando tecnologias como React, Javascript, HTML, CSS, TypeScript, Next.js, entre outros. Estou sempre em busca de novos desafios e oportunidades para aprender e crescer como desenvolvedor.",
+      "experiences": {
+        "title": "Experiências",  
+        "bendev":{
+          "title": "Desenvolvedor Front-end",
+          "company": "BenDev Studio",
+          "date": "2022 - 2023",
+          "description": "Desenvolvimento de aplicações web e mobile utilizando React, React Native, Next.js, entre outras tecnologias.",
+          "technologies": ["React", "React Native", "Next.js", "Javascript", "HTML", "CSS", "TypeScript"]
+          },
+        "freelancer": {
+          "title": "Desenvolvedor Front-end freelancer",
+          "company": "Freelancer",
+          "date": "2018 - Atualmente",
+          "description": "Desenvolvimento de aplicações web utilizando React, Next.js, entre outras tecnologias.",
+          "technologies": ["React", "Next.js", "Javascript", "HTML", "CSS", "TypeScript"]
+        }
+      },
+        "education": {
+        "title": "Educação",
+        "unopar": {
+          "title": "Análise e Desenvolvimento de Sistemas",
+          "institution": "Universidade Norte do Paraná - UNOPAR",
+          "date": "2018 - 2021",
+          "description": "Graduação em Análise e Desenvolvimento de Sistemas."
+        },
+        "gran": {
+          "title": "Especialização em Desenvolvimento Full Stack e Cloud Computing",
+          "institution": "Gran Faculdade",
+          "date": "Curso em andamento",
+          "description": "Pós graduação Lato Sensu em Desenvolvimento Full Stack e Cloud Computing."
+        },
+        "gran2": {
+          "title": "Especialização em Arquitetura e Projetos de Cloud Computing",
+          "institution": "Gran Faculdade",
+          "date": "Curso em andamento",
+          "description": "Pós graduação Lato Sensu em Arquitetura e Projetos de Cloud Computing."
+        }
+      },
+      "skills": {
+        "title": "Habilidades",
+        "content": "Aqui estão algumas das tecnologias com as quais trabalho:"
+        
+      }
+    }
+  }

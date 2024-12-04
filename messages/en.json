@@ -1,0 +1,58 @@
+{
+  "Navigation":{
+    "home": "Home",
+    "about": "About",
+    "portfolio": "Portfolio"
+  },
+    "HomePage": {
+      "title": "Hello, I'm Matheus!",
+      "subtitle": "Full Stack Developer",
+      "button": "See my portfolio"
+  },
+  "About": {
+    "title": "About",
+    "content": "Hello, I'm Matheus, a Full Stack developer. I am currently taking two postgraduate courses Lato Sensu, one in Full Stack Development and Cloud Computing and another in Cloud Computing Architecture and Projects. In addition, I have experience in Web development using technologies such as React, Javascript, HTML, CSS, TypeScript, Next.js, among others. I am always looking for new challenges and opportunities to learn and grow as a developer.",
+    "experiences": {
+        "title": "Experiences",
+        "bendev":{
+        "title": "Front-end Developer",
+        "company": "BenDev Studio",
+        "date": "2022 - 2023",
+        "description": "Web and mobile application development using React, React Native, Next.js, among others technologies.",
+        "technologies": ["React", "React Native", "Next.js", "Javascript", "HTML", "CSS", "TypeScript"],
+        "url": "https://bendevoficial.com//"
+      },
+      "freelancer": {
+        "title": "Freelancer Front-end Developer",
+        "company": "Freelancer",
+        "date": "2018 - Currently",
+        "description": "Web application development using React, Next.js, among others technologies."
+      }
+    },
+    "education": {
+      "title": "Education",
+      "unopar": {
+        "title": "Systems Analysis and Development",
+        "institution": "Universidade Norte do Paraná - UNOPAR",
+        "date": "2018 - 2021",
+        "description": "Graduation in Systems Analysis and Development."
+      },
+      "gran": {
+        "title": "Specialization in Full Stack Development and Cloud Computing",
+        "institution": "Gran Faculdade",
+        "date": "Course in progress",
+        "description": "Postgraduate course Lato Sensu in Full Stack Development and Cloud Computing."
+      },
+      "gran2": {
+        "title": "Specialization in Cloud Computing Architecture and Projects",
+        "institution": "Gran Faculdade",
+        "date": "Course in progress",
+        "description": "Postgraduate course Lato Sensu in Cloud Computing Architecture and Projects."
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "content": "Here are some of the technologies with which I work:"
+    }
+  }
+}

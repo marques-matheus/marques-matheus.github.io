@@ -1,0 +1,2 @@
+const Heading = ({ children }: { children: React.ReactNode }) => <h2 className="text-3xl  w-fit px-16 text-center mb-5 lg:text-5xl xl:text-6xl text-custom-400 font-bold border-b-4 border-custom-400">{children}</h2>;
+export default Heading;
