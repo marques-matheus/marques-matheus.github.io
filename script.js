@@ -2,46 +2,46 @@
 //  CLOUDOPS DASHBOARD — Data & Logic (v.Final)
 // ═══════════════════════════════════════════════════════════
 
-const PLAN_START = new Date('2026-05-04'); // Segunda-feira, 4 de maio
+const PLAN_START = new Date('2026-05-11'); // Start: Segunda-feira, 11 de maio de 2026
 
 const STUDY_PLAN = [
   {
     id: 'm1',
     month: 1,
-    title: 'GCP Catch-up + Base IaC',
-    subtitle: 'Deadline GCP 02/06 + Managing Access',
+    title: 'GCP Sprint + Base SRE/Ops',
+    subtitle: 'Deadline GCP + IAM & Linux Core',
     cssClass: 'm1',
     weeks: [
       {
-        label: 'Semana 1 (04/05 a 08/05)',
+        label: 'Semana 1 (11/05 a 15/05)',
         tasks: [
-          { id: 't1', text: 'GCP: Condensar Módulos "Rede/Segurança" e "Dados/ML/IA"', tag: 'gcp' },
-          { id: 't2', text: 'Terraform: Provisionar EC2 básica sem usar o console', tag: 'terraform' },
-          { id: 't3', text: 'Deep Dive AWS: Curso "CloudOps Engineer - Managing Access"', tag: 'aws' },
+          { id: 't1', text: 'GCP: Prática 1 (Cloud Load Balancing) e Prática 2 (Dev Apps)', tag: 'gcp' },
+          { id: 't2', text: 'Linux & Terraform: Provisionar EC2. Foco em SSH e permissões POSIX', tag: 'linux' },
+          { id: 't3', text: 'Skill Builder: CloudOps Engineer - Managing Access (Módulos 1-3)', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 2 (11/05 a 15/05)',
+        label: 'Semana 2 (18/05 a 22/05)',
         tasks: [
-          { id: 't4', text: 'GCP: Prática 1 (Load Balancing) e Prática 2 (Dev Apps)', tag: 'gcp' },
-          { id: 't5', text: 'Terraform: Remote State no S3, DynamoDB Lock e Variáveis', tag: 'terraform' },
-          { id: 't6', text: 'Deep Dive AWS: Concluir "Managing Access" e revisar PARC', tag: 'aws' },
+          { id: 't4', text: 'GCP: Prática 3 (Rede Segura) e Preparar Prática 4', tag: 'gcp' },
+          { id: 't5', text: 'Terraform: Remote State no S3 e DynamoDB para Locking', tag: 'terraform' },
+          { id: 't6', text: 'Skill Builder: Concluir Managing Access + AWS Jam: Security', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 3 (18/05 a 22/05)',
+        label: 'Semana 3 (25/05 a 29/05)',
         tasks: [
-          { id: 't7', text: 'GCP: Prática 3 (Como criar uma rede segura)', tag: 'gcp' },
-          { id: 't8', text: 'Terraform: Provisionar VPC, Subnets e Security Groups', tag: 'terraform' },
-          { id: 't9', text: 'Deep Dive AWS: Iniciar Security Core Badge', tag: 'aws' },
+          { id: 't7', text: 'GCP: Finalizar Prática 4 (APIs de ML) — Foco no Prazo 02/06', tag: 'gcp' },
+          { id: 't8', text: 'Linux & SRE: Gerenciamento de Processos (top, htop, ps, kill)', tag: 'linux' },
+          { id: 't9', text: 'Deep Dive AWS: Security Core Badge (SCPs e IAM Policies)', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 4 (25/05 a 29/05)',
+        label: 'Semana 4 (01/06 a 05/06)',
         tasks: [
-          { id: 't10', text: 'GCP: Prática 4 (APIs de ML - Preparação Final)', tag: 'gcp' },
-          { id: 't11', text: 'Terraform: CloudWatch básico (Alarmes EC2) via IaC', tag: 'terraform' },
-          { id: 't12', text: 'Deep Dive AWS: Concluir Security Core Badge', tag: 'aws' },
+          { id: 't10', text: 'GCP: Emitir Certificado Foundations (Deadline 02/06)', tag: 'gcp' },
+          { id: 't11', text: 'AWS Cloud Quest: Iniciar trilha de Security (Missões 1-4)', tag: 'aws' },
+          { id: 't12', text: 'Terraform: Variáveis, Locals e modularização base', tag: 'terraform' },
         ]
       },
     ]
@@ -49,40 +49,40 @@ const STUDY_PLAN = [
   {
     id: 'm2',
     month: 2,
-    title: 'Deadline EdN & Observabilidade',
-    subtitle: 'Prática 4, Zabbix & CQ Security',
+    title: 'Networking & Observability Full',
+    subtitle: 'VPC + Stack Zabbix/Grafana/Dynatrace',
     cssClass: 'm2',
     weeks: [
       {
-        label: 'Semana 5 (01/06 a 05/06)',
+        label: 'Semana 5 (08/06 a 12/06)',
         tasks: [
-          { id: 't13', text: '✅ GCP: Concluir Prática 4 e Emitir Certificado (Prazo: 02/06)', tag: 'gcp' },
-          { id: 't14', text: 'Terraform: Subir Zabbix Server via user_data', tag: 'terraform' },
-          { id: 't15', text: 'AWS Cloud Quest: Iniciar trilha Security', tag: 'aws' },
+          { id: 't13', text: 'Skill Builder: AWS Network Monitoring and Troubleshooting', tag: 'aws' },
+          { id: 't14', text: 'Terraform: Criar VPC Multi-AZ, Subnets e IGW do zero', tag: 'terraform' },
+          { id: 't15', text: 'AWS Cloud Quest: Continuar trilha de Security', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 6 (08/06 a 12/06)',
+        label: 'Semana 6 (15/06 a 19/06)',
         tasks: [
-          { id: 't16', text: 'Terraform: Subir Grafana + Datasource Zabbix', tag: 'terraform' },
-          { id: 't17', text: 'CloudWatch: Integração avançada e Logs Insights', tag: 'aws' },
-          { id: 't18', text: 'Deep Dive AWS: Iniciar Networking Core Badge', tag: 'aws' },
+          { id: 't16', text: 'Linux & Terraform: Subir Zabbix Server via User Data', tag: 'linux' },
+          { id: 't17', text: 'Skill Builder: AWS Observability (Logs, Metrics, Traces)', tag: 'aws' },
+          { id: 't18', text: 'Deep Dive AWS: Networking Core Badge (Hybrid Connectivity)', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 7 (15/06 a 19/06)',
+        label: 'Semana 7 (22/06 a 26/06)',
         tasks: [
-          { id: 't19', text: 'Deep Dive AWS: Concluir Networking Core Badge', tag: 'aws' },
-          { id: 't20', text: 'Review: Stack completa de observabilidade', tag: 'linux' },
-          { id: 't21', text: 'Continuar AWS Cloud Quest: Security', tag: 'aws' },
+          { id: 't19', text: 'Terraform: Integrar Grafana como Dashboard do Zabbix', tag: 'terraform' },
+          { id: 't20', text: 'Deep Dive SRE: Dynatrace APM vs CloudWatch (Estudo de Arquitetura)', tag: 'sre' },
+          { id: 't21', text: 'AWS Jam Journey: Networking / Connectivity', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 8 (22/06 a 26/06)',
+        label: 'Semana 8 (29/06 a 03/07)',
         tasks: [
-          { id: 't22', text: 'Integrar Grafana + CloudWatch como datasource', tag: 'aws' },
-          { id: 't23', text: '✅ Fechar AWS Cloud Quest: Security', tag: 'aws' },
-          { id: 't24', text: 'Preparar repositório Git para pipeline CI/CD', tag: 'cicd' },
+          { id: 't22', text: 'CloudWatch: Setup de Log Groups e Alertas via Terraform', tag: 'terraform' },
+          { id: 't23', text: 'Fechar AWS Cloud Quest: Security (Badge obtida)', tag: 'aws' },
+          { id: 't24', text: 'Revisão: Arquitetura de Redes & Monitoramento para CLF', tag: 'aws' },
         ]
       },
     ]
@@ -91,39 +91,39 @@ const STUDY_PLAN = [
     id: 'm3',
     month: 3,
     title: 'Well-Architected & CI/CD',
-    subtitle: 'Labs Avançados & CQ Sol. Architect',
+    subtitle: 'Incident Response + Automação',
     cssClass: 'm3',
     weeks: [
       {
-        label: 'Semana 9 (29/06 a 03/07)',
+        label: 'Semana 9 (06/07 a 10/07)',
         tasks: [
-          { id: 't25', text: 'GitHub Actions: Workflow terraform fmt + validate', tag: 'cicd' },
-          { id: 't26', text: 'Deep Dive AWS: Advanced Well-Architected Best Practices Lab', tag: 'aws' },
-          { id: 't27', text: 'Iniciar trilha AWS Cloud Quest: Solutions Architect', tag: 'aws' },
+          { id: 't25', text: 'Skill Builder: AWS Incident Response Demonstrated', tag: 'aws' },
+          { id: 't26', text: 'Terraform: Iniciar Pipeline no GitHub Actions (Plan/Apply)', tag: 'cicd' },
+          { id: 't27', text: 'AWS Cloud Quest: Iniciar trilha Solutions Architect', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 10 (06/07 a 10/07)',
+        label: 'Semana 10 (13/07 a 17/07)',
         tasks: [
-          { id: 't28', text: 'GitHub Actions: Terraform apply com approval manual', tag: 'cicd' },
-          { id: 't29', text: 'Documentar Runbook: SLA/SLO para a infraestrutura', tag: 'sre' },
+          { id: 't28', text: 'Skill Builder: Advanced Well-Architected Best Practices (Pilar 1-2)', tag: 'aws' },
+          { id: 't29', text: 'GitHub Actions: Implementar aprovação manual e locks', tag: 'cicd' },
           { id: 't30', text: 'Continuar AWS Cloud Quest: Solutions Architect', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 11 (13/07 a 17/07)',
+        label: 'Semana 11 (20/07 a 24/07)',
         tasks: [
-          { id: 't31', text: 'Simulação de Troubleshooting (incidentes controlados)', tag: 'sre' },
-          { id: 't32', text: 'Deep Dive AWS: Continuar Advanced Well-Architected Labs', tag: 'aws' },
-          { id: 't33', text: 'Iniciar Compute Core Badge', tag: 'aws' },
+          { id: 't31', text: 'Linux & SRE: Simulação de Incidente (derrubar e recuperar serviço)', tag: 'linux' },
+          { id: 't32', text: 'Skill Builder: Advanced Well-Architected Lab (Pilar 3-4)', tag: 'aws' },
+          { id: 't33', text: 'Deep Dive AWS: Compute Core Badge (ASG e Spot Fleet)', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 12 (20/07 a 24/07)',
+        label: 'Semana 12 (27/07 a 31/07)',
         tasks: [
-          { id: 't34', text: 'Fechamento dos Advanced Well-Architected Labs', tag: 'aws' },
-          { id: 't35', text: 'Concluir Compute Core Badge', tag: 'aws' },
-          { id: 't36', text: 'Pipeline CI/CD completo, funcional e documentado', tag: 'cicd' },
+          { id: 't34', text: 'AWS Jam Journey: Operations / Incident Management', tag: 'aws' },
+          { id: 't35', text: 'Concluir Compute Core Badge e Advanced WAF Labs', tag: 'aws' },
+          { id: 't36', text: 'Documentação: Guia prático de falhas comuns para Mentoria', tag: 'aws' },
         ]
       },
     ]
@@ -131,40 +131,40 @@ const STUDY_PLAN = [
   {
     id: 'm4',
     month: 4,
-    title: 'CloudOps Multi-Cloud',
-    subtitle: 'Projeto Final AWS+GCP',
+    title: 'FinOps & Multi-Cloud',
+    subtitle: 'Cloud8, Custos e Projeto Final',
     cssClass: 'm4',
     weeks: [
       {
-        label: 'Semana 13 (27/07 a 31/07)',
+        label: 'Semana 13 (03/08 a 07/08)',
         tasks: [
-          { id: 't37', text: 'Iniciar GCP Infra for AWS Professionals', tag: 'multicloud' },
-          { id: 't38', text: 'Projeto Final: Setup do repositório Terraform multi-cloud', tag: 'terraform' },
-          { id: 't39', text: 'Iniciar Storage Core Badge', tag: 'aws' },
+          { id: 't37', text: 'FinOps: Mapeamento de Custos AWS (Cost Explorer, Trusted Advisor)', tag: 'aws' },
+          { id: 't38', text: 'Deep Dive SRE: Ecossistema Cloud8 (Automação e Redução de Custos BR)', tag: 'sre' },
+          { id: 't39', text: 'GCP: Iniciar trilha "Google Cloud for AWS Professionals"', tag: 'multicloud' },
         ]
       },
       {
-        label: 'Semana 14 (03/08 a 07/08)',
+        label: 'Semana 14 (10/08 a 14/08)',
         tasks: [
-          { id: 't40', text: 'Projeto Final: VPC espelhada AWS + GCP via código', tag: 'multicloud' },
-          { id: 't41', text: 'Técnica de Lousa: Arquitetura multi-cloud no Excalidraw', tag: 'multicloud' },
-          { id: 't42', text: 'Continuar GCP Infra for AWS Professionals', tag: 'gcp' },
+          { id: 't40', text: 'Projeto Final: Setup Infra Multi-Cloud (AWS+GCP) via Terraform', tag: 'terraform' },
+          { id: 't41', text: 'Skill Builder: AWS Cost Management and Optimization', tag: 'aws' },
+          { id: 't42', text: 'Continuar Cloud Quest: Solutions Architect', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 15 (10/08 a 14/08)',
+        label: 'Semana 15 (17/08 a 21/08)',
         tasks: [
-          { id: 't43', text: 'Projeto Final: Compute + Storage espelhados', tag: 'multicloud' },
-          { id: 't44', text: 'Concluir Storage Core Badge', tag: 'aws' },
-          { id: 't45', text: 'Continuar AWS Cloud Quest: Solutions Architect', tag: 'aws' },
+          { id: 't43', text: 'Projeto Final: Peer Connectivity e Monitoramento Centralizado', tag: 'multicloud' },
+          { id: 't44', text: 'Skill Builder: Builder Lab - Automating Governance with AWS Config', tag: 'aws' },
+          { id: 't45', text: 'Revisão Geral: Mapeamento SAA/Ops para a realidade CLF-C02', tag: 'aws' },
         ]
       },
       {
-        label: 'Semana 16 (17/08 a 21/08)',
+        label: 'Semana 16 (24/08 a 28/08)',
         tasks: [
-          { id: 't46', text: '✅ Projeto Final concluído e repositório validado', tag: 'multicloud' },
-          { id: 't47', text: '✅ Concluir GCP Infra for AWS Professionals', tag: 'gcp' },
-          { id: 't48', text: '✅ Fechar CQ: Solutions Architect & Review Geral do Portfólio', tag: 'aws' },
+          { id: 't46', text: 'Projeto Final Concluído e Documentado no GitHub', tag: 'multicloud' },
+          { id: 't47', text: 'Fechar AWS Cloud Quest: Solutions Architect', tag: 'aws' },
+          { id: 't48', text: 'Portfolio Pronto: CloudOps/SAA Master', tag: 'aws' },
         ]
       },
     ]
@@ -172,11 +172,11 @@ const STUDY_PLAN = [
 ];
 
 const DAILY_ROUTINE = [
-  { time: '30min', desc: 'Certificação / Skill Builder (GCP Foundations no Mês 1)', cls: 'r-cert', icon: '📜' },
-  { time: '45min', desc: 'Lab Terraform — Bater lata com código HCL', cls: 'r-terraform', icon: '⌨️' },
-  { time: '30min', desc: 'AWS Cloud Quest (Security -> Solutions Architect)', cls: 'r-quest', icon: '🎮' },
-  { time: '45min', desc: 'Deep Dive & Engenharia de Lousa (Feynman)', cls: 'r-deep', icon: '🧠' },
-  { time: '15min', desc: 'Fechamento GitHub (Commits, ERROS.md)', cls: 'r-github', icon: '🔒' },
+  { time: '30min', desc: 'Skill Builder / GCP (Teoria Guiada)', cls: 'r-cert', icon: '📜' },
+  { time: '45min', desc: 'Terraform & Linux — Bater lata no terminal', cls: 'r-terraform', icon: '⌨️' },
+  { time: '30min', desc: 'Cloud Quest / AWS Jam (Terças e Quintas)', cls: 'r-quest', icon: '🎮' },
+  { time: '45min', desc: 'Engenharia de Lousa & Troubleshooting (Excalidraw)', cls: 'r-deep', icon: '🧠' },
+  { time: '15min', desc: 'Fechamento: Commits e Logs no ERROS.md', cls: 'r-github', icon: '🔒' },
 ];
 
 // ─── State ───
