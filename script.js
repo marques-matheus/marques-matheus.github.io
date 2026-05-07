@@ -8,16 +8,16 @@ const STUDY_PLAN = [
   {
     id: 'm1',
     month: 1,
-    title: 'GCP Sprint + Base SRE/Ops',
-    subtitle: 'Deadline GCP + IAM & Linux Core',
+    title: 'GCP Sprint + WA Deep Dive & Acessos',
+    subtitle: 'Deadline GCP + Teoria e Prática (Ops)',
     cssClass: 'm1',
     weeks: [
       {
         label: 'Semana 1 (11/05 a 15/05)',
         tasks: [
           { id: 't1', text: 'GCP: Prática 1 (Cloud Load Balancing) e Prática 2 (Dev Apps)', tag: 'gcp' },
-          { id: 't2', text: 'Linux & Terraform: Provisionar EC2. Foco em SSH e permissões POSIX', tag: 'linux' },
-          { id: 't3', text: 'Skill Builder: CloudOps Engineer - Managing Access (Módulos 1-3)', tag: 'aws' },
+          { id: 't2', text: 'Linux & Terraform: Provisionar EC2. Foco em SSH e permissões', tag: 'linux' },
+          { id: 't3', text: 'Deep Dive: Teoria WA (Pilar Segurança) + Prática "Managing Access"', tag: 'aws' },
         ]
       },
       {
@@ -25,7 +25,7 @@ const STUDY_PLAN = [
         tasks: [
           { id: 't4', text: 'GCP: Prática 3 (Rede Segura) e Preparar Prática 4', tag: 'gcp' },
           { id: 't5', text: 'Terraform: Remote State no S3 e DynamoDB para Locking', tag: 'terraform' },
-          { id: 't6', text: 'Skill Builder: Concluir Managing Access + AWS Jam: Security', tag: 'aws' },
+          { id: 't6', text: 'Deep Dive: Revisão IAM Base + Prática AWS Jam Journey: Security', tag: 'aws' },
         ]
       },
       {
@@ -33,13 +33,13 @@ const STUDY_PLAN = [
         tasks: [
           { id: 't7', text: 'GCP: Finalizar Prática 4 (APIs de ML) — Foco no Prazo 02/06', tag: 'gcp' },
           { id: 't8', text: 'Linux & SRE: Gerenciamento de Processos (top, htop, ps, kill)', tag: 'linux' },
-          { id: 't9', text: 'Deep Dive AWS: Security Core Badge (SCPs e IAM Policies)', tag: 'aws' },
+          { id: 't9', text: 'Deep Dive: Teoria WA (Custos/Resiliência) + Prática Advanced Labs', tag: 'aws' },
         ]
       },
       {
         label: 'Semana 4 (01/06 a 05/06)',
         tasks: [
-          { id: 't10', text: 'GCP: Emitir Certificado Foundations (Deadline 02/06)', tag: 'gcp' },
+          { id: 't10', text: '✅ GCP: Emitir Certificado Foundations (Deadline 02/06)', tag: 'gcp' },
           { id: 't11', text: 'AWS Cloud Quest: Iniciar trilha de Security (Missões 1-4)', tag: 'aws' },
           { id: 't12', text: 'Terraform: Variáveis, Locals e modularização base', tag: 'terraform' },
         ]
