@@ -15,15 +15,15 @@ const STUDY_PLAN = [
       {
         label: 'Semana 1 (11/05 a 15/05)',
         tasks: [
-          { id: 't1', text: 'GCP: Prática 1 (Cloud Load Balancing) e Prática 2 (Dev Apps)', tag: 'gcp' },
-          { id: 't2', text: 'Linux & Terraform: Provisionar EC2. Foco em SSH e permissões', tag: 'linux' },
-          { id: 't3', text: 'Deep Dive: Teoria WA (Pilar Segurança) + Prática "Managing Access"', tag: 'aws' },
+          { id: 't1', text: 'GCP: Fazer 1 Lab Prático por dia (Foco em Load Balancing e Dev Apps)', tag: 'gcp' },
+          { id: 't2', text: 'Terraform & CI/CD: Subir EC2 básica + Criar Pipeline GitHub Actions (Lint/Validate)', tag: 'terraform' },
+          { id: 't3', text: 'Deep Dive: Teoria WA (Pilar Segurança) + Prática AWS Lab Maker (IAM Roles)', tag: 'aws' },
         ]
       },
       {
         label: 'Semana 2 (18/05 a 22/05)',
         tasks: [
-          { id: 't4', text: 'GCP: Prática 3 (Rede Segura) e Preparar Prática 4', tag: 'gcp' },
+          { id: 't4', text: 'GCP: Fazer 1 Lab Prático por dia (Foco em Rede Segura)', tag: 'gcp' },
           { id: 't5', text: 'Terraform: Remote State no S3 e DynamoDB para Locking', tag: 'terraform' },
           { id: 't6', text: 'Deep Dive: Revisão IAM Base + Prática AWS Jam Journey: Security', tag: 'aws' },
         ]
@@ -31,7 +31,7 @@ const STUDY_PLAN = [
       {
         label: 'Semana 3 (25/05 a 29/05)',
         tasks: [
-          { id: 't7', text: 'GCP: Finalizar Prática 4 (APIs de ML) — Foco no Prazo 02/06', tag: 'gcp' },
+          { id: 't7', text: 'GCP: Fazer 1 Lab Prático por dia (APIs de ML) — Deadline batendo', tag: 'gcp' },
           { id: 't8', text: 'Linux & SRE: Gerenciamento de Processos (top, htop, ps, kill)', tag: 'linux' },
           { id: 't9', text: 'Deep Dive: Teoria WA (Custos/Resiliência) + Prática Advanced Labs', tag: 'aws' },
         ]
@@ -278,22 +278,22 @@ function renderStudyPlan(state) {
       </div>
       <div class="month-content ${expanded ? 'open' : ''}">
         ${month.weeks.map((week, wi) => {
-          globalWeek++;
-          const wk = mi * 4 + wi + 1;
-          const isCurrent = wk === currentWeek;
-          return `
+      globalWeek++;
+      const wk = mi * 4 + wi + 1;
+      const isCurrent = wk === currentWeek;
+      return `
             <div class="week-group">
               <div class="week-label ${isCurrent ? 'current-week' : ''}">${isCurrent ? '▸ ' : ''}${week.label}${isCurrent ? ' (atual)' : ''}</div>
               ${week.tasks.map(task => {
-                const checked = !!state[task.id];
-                return `
+        const checked = !!state[task.id];
+        return `
                   <div class="task-item ${checked ? 'checked' : ''}" data-task="${task.id}">
                     <div class="task-checkbox ${checked ? 'checked' : ''}">✓</div>
                     <span class="task-text">${task.text} <span class="task-tag tag-${task.tag}">${task.tag.toUpperCase()}</span></span>
                   </div>`;
-              }).join('')}
+      }).join('')}
             </div>`;
-        }).join('')}
+    }).join('')}
       </div>`;
 
     container.appendChild(block);
