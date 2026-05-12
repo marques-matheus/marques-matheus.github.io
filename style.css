@@ -600,3 +600,31 @@ body::before {
   .stats-grid { grid-template-columns: 1fr; }
   .warning-banner { font-size: 0.65rem; padding: 8px 12px; }
 }
+
+/* ── HIERARQUIA: SEMANAS E DIAS ── */
+.week-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 12px 0 6px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.day-group {
+  margin: 6px 0 12px 12px;
+  border-left: 2px dashed var(--border);
+  padding-left: 10px;
+}
+.day-label {
+  font-size: 0.7rem;
+  color: var(--accent-green);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.tag-itsm { background: rgba(0, 82, 204, 0.2); color: #4b8ffd; border: 1px solid rgba(0, 82, 204, 0.3); }
+
+.month-content.open { 
+  max-height: 8000px !important; 
+}

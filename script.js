@@ -1,186 +1,464 @@
 // ═══════════════════════════════════════════════════════════
-//  CLOUDOPS DASHBOARD — Data & Logic (v.Final)
+//  CLOUDOPS DASHBOARD — 4 MESES (ALTA DENSIDADE / SKILL BUILDER)
 // ═══════════════════════════════════════════════════════════
 
-const PLAN_START = new Date('2026-05-11'); // Start: Segunda-feira, 11 de maio de 2026
+const PLAN_START = new Date('2026-05-11');
 
 const STUDY_PLAN = [
   {
-    id: 'm1',
-    month: 1,
-    title: 'GCP Sprint + WA Deep Dive & Acessos',
-    subtitle: 'Deadline GCP + Teoria e Prática (Ops)',
-    cssClass: 'm1',
+    id: 'm1', month: 1, 
+    title: 'GCP + Sprint Darede & WA', subtitle: 'Foco Jira, Troubleshooting e Deadline', cssClass: 'm1',
     weeks: [
       {
-        label: 'Semana 1 (11/05 a 15/05)',
-        tasks: [
-          { id: 't1', text: 'GCP: Fazer 1 Lab Prático por dia (Foco em Load Balancing e Dev Apps)', tag: 'gcp' },
-          { id: 't2', text: 'Terraform & CI/CD: Subir EC2 básica + Criar Pipeline GitHub Actions (Lint/Validate)', tag: 'terraform' },
-          { id: 't3', text: 'Deep Dive: Teoria WA (Pilar Segurança) + Prática AWS Lab Maker (IAM Roles)', tag: 'aws' },
+        label: 'Semana 1: Fundação Operacional (Imersão Darede)',
+        days: [
+          { label: 'Segunda - Setup Base & CI/CD Intro', tasks: [
+            { id: 't1', text: 'GCP: Lab Diário (Load Balancing)', tag: 'gcp' },
+            { id: 't2', text: 'Vídeo: Assistir "GitHub Actions para Iniciantes" (LinuxTips no YouTube)', tag: 'cicd' },
+            { id: 't3', text: 'Terraform: Criar VPC Privada + EC2 (SSM)', tag: 'terraform' },
+            { id: 't4', text: 'CI/CD: Subir o pipeline básico (fmt e validate)', tag: 'cicd' }
+          ]},
+          { label: 'Terça - ITSM & Debug de Esteira', tasks: [
+            { id: 't5', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't6', text: 'Jira: Criar board Kanban e configurar workflow de chamados (To Do > In Progress > Done)', tag: 'itsm' },
+            { id: 't7', text: 'CI/CD: Quebrar a formatação do Terraform de propósito, dar Push e ler o log de erro no Actions', tag: 'cicd' },
+            { id: 't8', text: 'Jira: Abrir ticket INC-001 relatando a quebra do pipeline e mover para Done ao corrigir', tag: 'itsm' }
+          ]},
+          { label: 'Quarta - Acesso & Linux Básico', tasks: [
+            { id: 't9', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't10', text: 'Skill Builder: AWS Systems Manager - Session Manager (Curso Curto/Vídeo)', tag: 'aws' },
+            { id: 't11', text: 'Linux: Acessar EC2, criar arquivo, alterar dono (chown) e permissão (chmod)', tag: 'linux' },
+            { id: 't12', text: 'Linux: Criar um Shell Script simples (.sh) para automatizar a criação de usuários', tag: 'linux' }
+          ]},
+          { label: 'Quinta - Redes & Troubleshooting', tasks: [
+            { id: 't13', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't14', text: 'Skill Builder: AWS Network Troubleshooting (Identificar falhas de Roteamento)', tag: 'aws' },
+            { id: 't15', text: 'AWS Lab Maker: Criar Lab com EC2 isolada e configurar os VPC Endpoints do SSM do zero', tag: 'aws' },
+            { id: 't16', text: 'Prática: Testar conectividade usando comandos ping, curl e telnet no terminal', tag: 'linux' }
+          ]},
+          { label: 'Sexta - Versionamento Básico', tasks: [
+            { id: 't17', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't18', text: 'Git: Praticar comandos essenciais (git branch, git checkout, git merge)', tag: 'cicd' },
+            { id: 't19', text: 'GitHub: Abrir um Pull Request simulado, aprovar e fazer o Merge na main', tag: 'cicd' },
+            { id: 't20', text: 'Jira: Configurar automação simples (ex: se ticket fechar, adicionar comentário padrão de RCA)', tag: 'itsm' }
+          ]}
         ]
       },
       {
-        label: 'Semana 2 (18/05 a 22/05)',
-        tasks: [
-          { id: 't4', text: 'GCP: Fazer 1 Lab Prático por dia (Foco em Rede Segura)', tag: 'gcp' },
-          { id: 't5', text: 'Terraform: Remote State no S3 e DynamoDB para Locking', tag: 'terraform' },
-          { id: 't6', text: 'Deep Dive: Revisão IAM Base + Prática AWS Jam Journey: Security', tag: 'aws' },
+        label: 'Semana 2: Operação e Logs (Mão na Massa N2)',
+        days: [
+          { label: 'Segunda - IaC Avançado e IAM', tasks: [
+            { id: 't21', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't22', text: 'Skill Builder: IAM Access Analyzer (Teoria e Prática)', tag: 'aws' },
+            { id: 't23', text: 'Terraform: Refatorar main.tf utilizando variáveis (variables.tf) e outputs (outputs.tf)', tag: 'terraform' },
+            { id: 't24', text: 'GitHub: Passar credenciais da AWS via GitHub Secrets (Emulação de CI seguro)', tag: 'cicd' }
+          ]},
+          { label: 'Terça - Monitoramento Ativo', tasks: [
+            { id: 't25', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't26', text: 'Skill Builder: Amazon CloudWatch Logs Deep Dive', tag: 'aws' },
+            { id: 't27', text: 'Prática: Instalar e configurar o CloudWatch Agent manualmente na EC2', tag: 'linux' },
+            { id: 't28', text: 'AWS: Criar Alarme no CloudWatch para uso de CPU acima de 80%', tag: 'aws' }
+          ]},
+          { label: 'Quarta - Caos e Análise de Logs', tasks: [
+            { id: 't29', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't30', text: 'Linux: Instalar pacote "stress" e forçar CPU a 100% para triggar o Alarme AWS', tag: 'linux' },
+            { id: 't31', text: 'Linux: Ler e interpretar logs reais em /var/log/auth.log e /var/log/syslog', tag: 'linux' },
+            { id: 't32', text: 'Jira: Abrir INC-002 de CPU alta e escrever o RCA baseando-se no log do CloudWatch', tag: 'itsm' }
+          ]},
+          { label: 'Quinta - Storage Troubleshooting', tasks: [
+            { id: 't33', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't34', text: 'Skill Builder: Amazon EBS Snapshots e Lifecycle Policies', tag: 'aws' },
+            { id: 't35', text: 'Linux: Diagnosticar disco com `df -h` e `du -sh` e achar os maiores arquivos (find)', tag: 'linux' },
+            { id: 't36', text: 'AWS/Linux: Aumentar o tamanho do volume EBS a quente e usar `growpart` no terminal', tag: 'aws' }
+          ]},
+          { label: 'Sexta - DevSecOps & Entrevista', tasks: [
+            { id: 't37', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't38', text: 'Skill Builder: AWS Security Hub Overview', tag: 'aws' },
+            { id: 't39', text: 'CI/CD: Instalar e rodar o `checkov` ou `tfsec` localmente para validar o Terraform', tag: 'cicd' },
+            { id: 't40', text: 'Soft Skills: Gravar áudio de 2min explicando o troubleshooting de Disco (Mock Interview)', tag: 'itsm' }
+          ]}
         ]
       },
       {
-        label: 'Semana 3 (25/05 a 29/05)',
-        tasks: [
-          { id: 't7', text: 'GCP: Fazer 1 Lab Prático por dia (APIs de ML) — Deadline batendo', tag: 'gcp' },
-          { id: 't8', text: 'Linux & SRE: Gerenciamento de Processos (top, htop, ps, kill)', tag: 'linux' },
-          { id: 't9', text: 'Deep Dive: Teoria WA (Custos/Resiliência) + Prática Advanced Labs', tag: 'aws' },
+        label: 'Semana 3: SRE & Well-Architected',
+        days: [
+          { label: 'Segunda - Processos SRE', tasks: [
+            { id: 't41', text: 'GCP: Lab Diário (APIs ML) - Foco Deadline', tag: 'gcp' },
+            { id: 't42', text: 'Linux SRE: Gerenciamento de Processos (top, kill)', tag: 'linux' }
+          ]},
+          { label: 'Terça - WA Custos', tasks: [
+            { id: 't43', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't44', text: 'Skill Builder: Deep Dive WA Pilar Otimização de Custos', tag: 'aws' }
+          ]},
+          { label: 'Quarta - Prática FinOps', tasks: [
+            { id: 't45', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't46', text: 'Lab Maker: Gerar ambiente para análise de instâncias ociosas', tag: 'aws' }
+          ]},
+          { label: 'Quinta - WA Resiliência', tasks: [
+            { id: 't47', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't48', text: 'Skill Builder: Deep Dive WA Pilar de Confiabilidade', tag: 'aws' }
+          ]},
+          { label: 'Sexta - Alta Disponibilidade', tasks: [
+            { id: 't49', text: 'GCP: Lab Diário', tag: 'gcp' },
+            { id: 't50', text: 'AWS Jam Journey / Lab Maker: Cenário de falha em AZ', tag: 'aws' }
+          ]}
         ]
       },
       {
-        label: 'Semana 4 (01/06 a 05/06)',
-        tasks: [
-          { id: 't10', text: '✅ GCP: Emitir Certificado Foundations (Deadline 02/06)', tag: 'gcp' },
-          { id: 't11', text: 'AWS Cloud Quest: Iniciar trilha de Security (Missões 1-4)', tag: 'aws' },
-          { id: 't12', text: 'Terraform: Variáveis, Locals e modularização base', tag: 'terraform' },
+        label: 'Semana 4: Certificação & AWS Core',
+        days: [
+          { label: 'Segunda - Checkpoint GCP', tasks: [
+            { id: 't51', text: '✅ GCP: Emitir Certificado Foundations (Deadline 02/06)', tag: 'gcp' },
+            { id: 't52', text: 'Skill Builder: IAM Deep Dive Lab', tag: 'aws' }
+          ]},
+          { label: 'Terça - Gamificação Ops', tasks: [
+            { id: 't53', text: 'AWS Cloud Quest: Trilha de Security (Missões 1 e 2)', tag: 'aws' },
+            { id: 't54', text: 'Linux: Comandos de rede (ping, traceroute, netstat)', tag: 'linux' }
+          ]},
+          { label: 'Quarta - Estruturas', tasks: [
+            { id: 't55', text: 'AWS Cloud Quest: Trilha de Security (Missões 3 e 4)', tag: 'aws' },
+            { id: 't56', text: 'Skill Builder: VPC Flow Logs Hands-on', tag: 'aws' }
+          ]},
+          { label: 'Quinta - Terraform', tasks: [
+            { id: 't57', text: 'Terraform: Criar módulo básico (Ex: Security Group)', tag: 'terraform' },
+            { id: 't58', text: 'Jira: Documentar criação do Módulo no board', tag: 'itsm' }
+          ]},
+          { label: 'Sexta - Review Mensal', tasks: [
+            { id: 't59', text: 'GitHub: Documentar o código no README.md (Portfolio)', tag: 'cicd' },
+            { id: 't60', text: 'Skill Builder: AWS Shared Responsibility Model', tag: 'aws' }
+          ]}
         ]
-      },
+      }
     ]
   },
   {
-    id: 'm2',
-    month: 2,
-    title: 'Networking & Observability Full',
-    subtitle: 'VPC + Stack Zabbix/Grafana/Dynatrace',
-    cssClass: 'm2',
+    id: 'm2', month: 2, 
+    title: 'Networking & Observability Full', subtitle: 'VPC + Stack Zabbix/Grafana', cssClass: 'm2',
     weeks: [
       {
-        label: 'Semana 5 (08/06 a 12/06)',
-        tasks: [
-          { id: 't13', text: 'Skill Builder: AWS Network Monitoring and Troubleshooting', tag: 'aws' },
-          { id: 't14', text: 'Terraform: Criar VPC Multi-AZ, Subnets e IGW do zero', tag: 'terraform' },
-          { id: 't15', text: 'AWS Cloud Quest: Continuar trilha de Security', tag: 'aws' },
+        label: 'Semana 5: Infraestrutura de Redes',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't61', text: 'Skill Builder: AWS Network Troubleshooting (Teoria)', tag: 'aws' },
+            { id: 't62', text: 'Terraform: Iniciar código da VPC Multi-AZ', tag: 'terraform' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't63', text: 'Skill Builder: Transit Gateway Basics', tag: 'aws' },
+            { id: 't64', text: 'Terraform: Criar Subnets, IGW e Route Tables', tag: 'terraform' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't65', text: 'Lab Maker: Provisionar ambiente com erro de VPC Peering', tag: 'aws' },
+            { id: 't66', text: 'Terraform: Implementar NAT Gateway/Endpoints', tag: 'terraform' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't67', text: 'AWS Jam: Networking Challenges (Troubleshooting)', tag: 'aws' },
+            { id: 't68', text: 'Jira: Relatar RCA das falhas de rede do Jam', tag: 'itsm' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't69', text: 'AWS Cloud Quest: Continuar trilha de Security', tag: 'aws' },
+            { id: 't70', text: 'Git: Commitar VPC Completa via Action', tag: 'cicd' }
+          ]}
         ]
       },
       {
-        label: 'Semana 6 (15/06 a 19/06)',
-        tasks: [
-          { id: 't16', text: 'Linux & Terraform: Subir Zabbix Server via User Data', tag: 'linux' },
-          { id: 't17', text: 'Skill Builder: AWS Observability (Logs, Metrics, Traces)', tag: 'aws' },
-          { id: 't18', text: 'Deep Dive AWS: Networking Core Badge (Hybrid Connectivity)', tag: 'aws' },
+        label: 'Semana 6: Stack de Monitoramento',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't71', text: 'Skill Builder: AWS Observability (Logs, Metrics, Traces)', tag: 'aws' },
+            { id: 't72', text: 'Linux: Criar script Shell (.sh) para instalar Zabbix', tag: 'linux' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't73', text: 'Skill Builder: CloudWatch Metrics Deep Dive', tag: 'aws' },
+            { id: 't74', text: 'Terraform: Subir Zabbix Server passando User Data', tag: 'terraform' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't75', text: 'Skill Builder: AWS X-Ray Basics', tag: 'aws' },
+            { id: 't76', text: 'Linux: Troubleshooting do agente Zabbix na porta 10050', tag: 'linux' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't77', text: 'Skill Builder: Amazon EventBridge Fundamentals', tag: 'aws' },
+            { id: 't78', text: 'Terraform: Integrar tópicos SNS para alertas', tag: 'terraform' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't79', text: 'Deep Dive: Iniciar Networking Core Badge', tag: 'aws' },
+            { id: 't80', text: 'AWS Cloud Quest: Security Míssions', tag: 'aws' }
+          ]}
         ]
       },
       {
-        label: 'Semana 7 (22/06 a 26/06)',
-        tasks: [
-          { id: 't19', text: 'Terraform: Integrar Grafana como Dashboard do Zabbix', tag: 'terraform' },
-          { id: 't20', text: 'Deep Dive SRE: Dynatrace APM vs CloudWatch (Estudo de Arquitetura)', tag: 'sre' },
-          { id: 't21', text: 'AWS Jam Journey: Networking / Connectivity', tag: 'aws' },
+        label: 'Semana 7: APM & Dashboards',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't81', text: 'Skill Builder: CloudWatch Dashboards Lab', tag: 'aws' },
+            { id: 't82', text: 'Terraform: Provisionar EC2 para o Grafana', tag: 'terraform' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't83', text: 'Lab Maker: Gerar infra para testar EC2 Monitoring', tag: 'aws' },
+            { id: 't84', text: 'Linux: Configurar integração Zabbix -> Grafana via API', tag: 'linux' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't85', text: 'SRE: Estudo Comparativo - Dynatrace APM vs CloudWatch', tag: 'sre' },
+            { id: 't86', text: 'Terraform: Exportar métricas de disco via código', tag: 'terraform' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't87', text: 'Skill Builder: Application Insights for .NET/SQL', tag: 'aws' },
+            { id: 't88', text: 'Arquitetura: Desenhar fluxo de monitoramento no Excalidraw', tag: 'itsm' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't89', text: 'AWS Jam Journey: Networking / Connectivity', tag: 'aws' },
+            { id: 't90', text: 'GitHub: Atualizar Readme com arquitetura de Logs', tag: 'cicd' }
+          ]}
         ]
       },
       {
-        label: 'Semana 8 (29/06 a 03/07)',
-        tasks: [
-          { id: 't22', text: 'CloudWatch: Setup de Log Groups e Alertas via Terraform', tag: 'terraform' },
-          { id: 't23', text: 'Fechar AWS Cloud Quest: Security (Badge obtida)', tag: 'aws' },
-          { id: 't24', text: 'Revisão: Arquitetura de Redes & Monitoramento para CLF', tag: 'aws' },
+        label: 'Semana 8: Fechamento de Redes',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't91', text: 'Skill Builder: VPC Traffic Mirroring', tag: 'aws' },
+            { id: 't92', text: 'Terraform: Centralizar CloudWatch Log Groups', tag: 'terraform' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't93', text: 'Skill Builder: Route 53 Routing Policies', tag: 'aws' },
+            { id: 't94', text: 'Linux: Troubleshooting DNS (dig, nslookup)', tag: 'linux' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't95', text: '✅ Fechar AWS Cloud Quest: Security Badge', tag: 'aws' },
+            { id: 't96', text: 'AWS Jam: Resolver challenge de DNS/Routing', tag: 'aws' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't97', text: 'Lab Maker: Testar DNS Failover Multi-Region', tag: 'aws' },
+            { id: 't98', text: 'Mentoria: Desenhar Lousa sobre Redes AWS', tag: 'itsm' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't99', text: 'Skill Builder: Review SAA Networking Domains', tag: 'aws' },
+            { id: 't100', text: 'Git: Fechar Sprint de Networking e Commitar', tag: 'cicd' }
+          ]}
         ]
-      },
+      }
     ]
   },
   {
-    id: 'm3',
-    month: 3,
-    title: 'Well-Architected & CI/CD',
-    subtitle: 'Incident Response + Automação',
-    cssClass: 'm3',
+    id: 'm3', month: 3, 
+    title: 'Well-Architected & CI/CD', subtitle: 'Incident Response + Automação', cssClass: 'm3',
     weeks: [
       {
-        label: 'Semana 9 (06/07 a 10/07)',
-        tasks: [
-          { id: 't25', text: 'Skill Builder: AWS Incident Response Demonstrated', tag: 'aws' },
-          { id: 't26', text: 'Terraform: Iniciar Pipeline no GitHub Actions (Plan/Apply)', tag: 'cicd' },
-          { id: 't27', text: 'AWS Cloud Quest: Iniciar trilha Solutions Architect', tag: 'aws' },
+        label: 'Semana 9: Resposta a Incidentes',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't101', text: 'Skill Builder: AWS Incident Response Demonstrated', tag: 'aws' },
+            { id: 't102', text: 'Jira: Documentar workflow de RCA corporativo', tag: 'itsm' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't103', text: 'Skill Builder: AWS Systems Manager Incident Manager', tag: 'aws' },
+            { id: 't104', text: 'Terraform: Migrar para S3 Backend Remoto', tag: 'terraform' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't105', text: 'Skill Builder: AWS Config Basics', tag: 'aws' },
+            { id: 't106', text: 'Terraform: Adicionar DynamoDB State Lock', tag: 'terraform' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't107', text: 'Lab Maker: Simular EC2 comprometida (Isolamento de Rede)', tag: 'aws' },
+            { id: 't108', text: 'CI/CD: Refatorar YAML do GitHub Actions', tag: 'cicd' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't109', text: 'AWS Cloud Quest: Iniciar Trilha Solutions Architect', tag: 'aws' },
+            { id: 't110', text: 'Linux SRE: Análise Forense básica de logs pós-incidente', tag: 'linux' }
+          ]}
         ]
       },
       {
-        label: 'Semana 10 (13/07 a 17/07)',
-        tasks: [
-          { id: 't28', text: 'Skill Builder: Advanced Well-Architected Best Practices (Pilar 1-2)', tag: 'aws' },
-          { id: 't29', text: 'GitHub Actions: Implementar aprovação manual e locks', tag: 'cicd' },
-          { id: 't30', text: 'Continuar AWS Cloud Quest: Solutions Architect', tag: 'aws' },
+        label: 'Semana 10: WA e Aprovações',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't111', text: 'Skill Builder: WA Best Practices (Pilares Segurança/Custos)', tag: 'aws' },
+            { id: 't112', text: 'Terraform: Pipeline completo Plan -> Apply', tag: 'cicd' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't113', text: 'Lab Maker: Cenário IAM Roles & Trust Relationships', tag: 'aws' },
+            { id: 't114', text: 'CI/CD: Configurar Environments no GitHub (Require Approval)', tag: 'cicd' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't115', text: 'Skill Builder: AWS Security Hub Overview', tag: 'aws' },
+            { id: 't116', text: 'Linux: Simular patching de segurança em instâncias', tag: 'linux' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't117', text: 'Lab Maker: Forçar encriptação KMS via S3 Bucket Policy', tag: 'aws' },
+            { id: 't118', text: 'CI/CD: Testar aprovação manual de código ao vivo', tag: 'cicd' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't119', text: 'AWS Cloud Quest: Solutions Architect (Storage)', tag: 'aws' },
+            { id: 't120', text: 'Jira: Documentar regras de aprovação da esteira', tag: 'itsm' }
+          ]}
         ]
       },
       {
-        label: 'Semana 11 (20/07 a 24/07)',
-        tasks: [
-          { id: 't31', text: 'Linux & SRE: Simulação de Incidente (derrubar e recuperar serviço)', tag: 'linux' },
-          { id: 't32', text: 'Skill Builder: Advanced Well-Architected Lab (Pilar 3-4)', tag: 'aws' },
-          { id: 't33', text: 'Deep Dive AWS: Compute Core Badge (ASG e Spot Fleet)', tag: 'aws' },
+        label: 'Semana 11: Caos e Auto Scaling',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't121', text: 'Skill Builder: Amazon EC2 Auto Scaling', tag: 'aws' },
+            { id: 't122', text: 'Linux Chaos: Injetar carga de CPU (stress) para forçar Alarmes', tag: 'linux' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't123', text: 'Skill Builder: Elastic Load Balancing Deep Dive', tag: 'aws' },
+            { id: 't124', text: 'Terraform: Codificar Application Load Balancer (ALB)', tag: 'terraform' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't125', text: 'Skill Builder: WA Best Practices (Pilares Confiabilidade/Performance)', tag: 'aws' },
+            { id: 't126', text: 'Terraform: Linkar ASG + ALB + Target Groups', tag: 'terraform' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't127', text: 'Deep Dive: Compute Core Badge (Auto Scaling)', tag: 'aws' },
+            { id: 't128', text: 'AWS CLI: Gerenciar instâncias no ASG via terminal', tag: 'linux' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't129', text: 'Deep Dive: Compute Core Badge (Spot Instances)', tag: 'aws' },
+            { id: 't130', text: 'Terraform: Provisionar Launch Template com Spot Fleet', tag: 'terraform' }
+          ]}
         ]
       },
       {
-        label: 'Semana 12 (27/07 a 31/07)',
-        tasks: [
-          { id: 't34', text: 'AWS Jam Journey: Operations / Incident Management', tag: 'aws' },
-          { id: 't35', text: 'Concluir Compute Core Badge e Advanced WAF Labs', tag: 'aws' },
-          { id: 't36', text: 'Documentação: Guia prático de falhas comuns para Mentoria', tag: 'aws' },
+        label: 'Semana 12: Consolidação Ops',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't131', text: 'Skill Builder: AWS Fault Injection Simulator (Teoria SRE)', tag: 'aws' },
+            { id: 't132', text: 'AWS Jam Journey: Operations (Incident Mgmt)', tag: 'aws' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't133', text: 'Lab Maker: Testar recuperação de AZ caída', tag: 'aws' },
+            { id: 't134', text: 'AWS Jam Journey: Operations (Finalização)', tag: 'aws' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't135', text: '✅ Concluir Compute Core Badge', tag: 'aws' },
+            { id: 't136', text: 'Terraform: Refatoração final do módulo de Computação', tag: 'terraform' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't137', text: 'Skill Builder: Disaster Recovery on AWS', tag: 'aws' },
+            { id: 't138', text: 'Doc: Guia de restrições do Learner Lab (Para Mentoria)', tag: 'itsm' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't139', text: 'AWS Cloud Quest: Solutions Architect (Networking)', tag: 'aws' },
+            { id: 't140', text: 'Mentoria: Lousa e planejamento de conteúdo CloudOps', tag: 'aws' }
+          ]}
         ]
-      },
+      }
     ]
   },
   {
-    id: 'm4',
-    month: 4,
-    title: 'FinOps & Multi-Cloud',
-    subtitle: 'Cloud8, Custos e Projeto Final',
-    cssClass: 'm4',
+    id: 'm4', month: 4, 
+    title: 'FinOps & Multi-Cloud', subtitle: 'Cloud8, Custos e Projeto Final', cssClass: 'm4',
     weeks: [
       {
-        label: 'Semana 13 (03/08 a 07/08)',
-        tasks: [
-          { id: 't37', text: 'FinOps: Mapeamento de Custos AWS (Cost Explorer, Trusted Advisor)', tag: 'aws' },
-          { id: 't38', text: 'Deep Dive SRE: Ecossistema Cloud8 (Automação e Redução de Custos BR)', tag: 'sre' },
-          { id: 't39', text: 'GCP: Iniciar trilha "Google Cloud for AWS Professionals"', tag: 'multicloud' },
+        label: 'Semana 13: Controle de Custos',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't141', text: 'Skill Builder: AWS Cost Explorer / Trusted Advisor', tag: 'aws' },
+            { id: 't142', text: 'FinOps: Definir estratégia de Tagging Obrigatória', tag: 'itsm' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't143', text: 'Skill Builder: AWS Budgets and Alerts', tag: 'aws' },
+            { id: 't144', text: 'Terraform: Implementar AWS Budgets via HCL', tag: 'terraform' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't145', text: 'SRE: Estudo do Ecossistema Cloud8 (Automação BR)', tag: 'sre' },
+            { id: 't146', text: 'Skill Builder: Cost Optimization Techniques', tag: 'aws' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't147', text: 'GCP: Retomar módulo "Google Cloud for AWS Prof" (IAM/VPC)', tag: 'multicloud' },
+            { id: 't148', text: 'Lab Maker: Right-sizing de EC2 (Redução de custo)', tag: 'aws' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't149', text: 'GCP: "Google Cloud for AWS Prof" (Compute Engine)', tag: 'multicloud' },
+            { id: 't150', text: 'GitHub: Documentar FinOps e Tagging no README', tag: 'cicd' }
+          ]}
         ]
       },
       {
-        label: 'Semana 14 (10/08 a 14/08)',
-        tasks: [
-          { id: 't40', text: 'Projeto Final: Setup Infra Multi-Cloud (AWS+GCP) via Terraform', tag: 'terraform' },
-          { id: 't41', text: 'Skill Builder: AWS Cost Management and Optimization', tag: 'aws' },
-          { id: 't42', text: 'Continuar Cloud Quest: Solutions Architect', tag: 'aws' },
+        label: 'Semana 14: O Grande Projeto',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't151', text: 'Skill Builder: AWS Compute Optimizer Overview', tag: 'aws' },
+            { id: 't152', text: 'Projeto Final: Excalidraw Topologia AWS+GCP', tag: 'itsm' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't153', text: 'GCP: "Google Cloud for AWS Prof" (Cloud Storage)', tag: 'multicloud' },
+            { id: 't154', text: 'Terraform: Setup da infra base AWS do Projeto', tag: 'terraform' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't155', text: 'GCP: "Google Cloud for AWS Prof" (Databases)', tag: 'multicloud' },
+            { id: 't156', text: 'Terraform: Setup da infra base GCP do Projeto', tag: 'terraform' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't157', text: 'Skill Builder: Cost Management Labs Práticos', tag: 'aws' },
+            { id: 't158', text: 'Terraform: Integrar Outputs AWS para Inputs GCP', tag: 'terraform' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't159', text: 'AWS Cloud Quest: Solutions Architect (Databases)', tag: 'aws' },
+            { id: 't160', text: 'Git: Commit da infraestrutura Multi-Cloud parcial', tag: 'cicd' }
+          ]}
         ]
       },
       {
-        label: 'Semana 15 (17/08 a 21/08)',
-        tasks: [
-          { id: 't43', text: 'Projeto Final: Peer Connectivity e Monitoramento Centralizado', tag: 'multicloud' },
-          { id: 't44', text: 'Skill Builder: Builder Lab - Automating Governance with AWS Config', tag: 'aws' },
-          { id: 't45', text: 'Revisão Geral: Mapeamento SAA/Ops para a realidade CLF-C02', tag: 'aws' },
+        label: 'Semana 15: Conectividade Cross-Cloud',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't161', text: 'Skill Builder: AWS Site-to-Site VPN', tag: 'aws' },
+            { id: 't162', text: 'Projeto: Arquitetar túnel IPsec AWS <-> GCP', tag: 'multicloud' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't163', text: 'GCP: "Google Cloud for AWS Prof" (Networking)', tag: 'multicloud' },
+            { id: 't164', text: 'Projeto: Configurar chaves e BGP da VPN (Teoria/Prática)', tag: 'multicloud' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't165', text: 'Skill Builder: Automating Governance com AWS Config', tag: 'aws' },
+            { id: 't166', text: 'Terraform: Habilitar AWS Config na VPC', tag: 'terraform' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't167', text: 'Lab Maker: Testar compliance rules do AWS Config', tag: 'aws' },
+            { id: 't168', text: 'Revisão Lousa: Mapeamento da ementa SAA-C03', tag: 'aws' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't169', text: 'AWS Cloud Quest: Reta final das missões de Arquitetura', tag: 'aws' },
+            { id: 't170', text: 'Projeto: Documentar topologia no repositório final', tag: 'cicd' }
+          ]}
         ]
       },
       {
-        label: 'Semana 16 (24/08 a 28/08)',
-        tasks: [
-          { id: 't46', text: 'Projeto Final Concluído e Documentado no GitHub', tag: 'multicloud' },
-          { id: 't47', text: 'Fechar AWS Cloud Quest: Solutions Architect', tag: 'aws' },
-          { id: 't48', text: 'Portfolio Pronto: CloudOps/SAA Master', tag: 'aws' },
+        label: 'Semana 16: O Arquiteto',
+        days: [
+          { label: 'Segunda', tasks: [
+            { id: 't171', text: 'Skill Builder: AWS Well-Architected Tool Hands-on', tag: 'aws' },
+            { id: 't172', text: 'Projeto: Teste de ponta a ponta e ping AWS->GCP', tag: 'multicloud' }
+          ]},
+          { label: 'Terça', tasks: [
+            { id: 't173', text: 'Lab Maker: Simular Arquitetura Multi-tier (Web/App/DB)', tag: 'aws' },
+            { id: 't174', text: '✅ Projeto Final Documentado e Lançado no GitHub', tag: 'cicd' }
+          ]},
+          { label: 'Quarta', tasks: [
+            { id: 't175', text: '✅ Fechar AWS Cloud Quest: Solutions Architect', tag: 'aws' },
+            { id: 't176', text: 'Jira: Fechar Epic "Preparação Solutions Architect"', tag: 'itsm' }
+          ]},
+          { label: 'Quinta', tasks: [
+            { id: 't177', text: 'Skill Builder: Exam Readiness Solutions Architect / SysOps', tag: 'aws' },
+            { id: 't178', text: 'Carreira: Update LinkedIn (Multi-Cloud, FinOps, SRE)', tag: 'itsm' }
+          ]},
+          { label: 'Sexta', tasks: [
+            { id: 't179', text: '✅ Portfolio CloudOps Master Completo', tag: 'aws' },
+            { id: 't180', text: 'Mentoria Final: Preparar discurso para alunos da EdN', tag: 'itsm' }
+          ]}
         ]
-      },
+      }
     ]
-  },
+  }
 ];
 
 const DAILY_ROUTINE = [
-  { time: '30min', desc: 'Skill Builder / GCP (Teoria Guiada)', cls: 'r-cert', icon: '📜' },
-  { time: '45min', desc: 'Terraform & Linux — Bater lata no terminal', cls: 'r-terraform', icon: '⌨️' },
-  { time: '30min', desc: 'Cloud Quest / AWS Jam (Terças e Quintas)', cls: 'r-quest', icon: '🎮' },
-  { time: '45min', desc: 'Engenharia de Lousa & Troubleshooting (Excalidraw)', cls: 'r-deep', icon: '🧠' },
-  { time: '15min', desc: 'Fechamento: Commits e Logs no ERROS.md', cls: 'r-github', icon: '🔒' },
+  { time: '30min', desc: 'GCP Labs / Skill Builder Theory', cls: 'r-cert', icon: '📜' },
+  { time: '60min', desc: 'Terraform & Linux & Lab Maker', cls: 'r-terraform', icon: '⌨️' },
+  { time: '30min', desc: 'Cloud Quest & Troubleshooting', cls: 'r-quest', icon: '🔧' },
+  { time: '15min', desc: 'Jira e Git Push', cls: 'r-github', icon: '📋' },
 ];
 
-// ─── State ───
-const STORAGE_KEY = 'cloudops-dashboard-v1';
+const STORAGE_KEY = 'cloudops-dashboard-v6-maxdensity';
 
 function loadState() {
   try {
@@ -195,14 +473,16 @@ function saveState(state) {
 
 function getCurrentWeek() {
   const now = new Date();
-  const diff = now - PLAN_START;
-  if (diff < 0) return 0;
-  return Math.min(Math.floor(diff / (7 * 24 * 60 * 60 * 1000)) + 1, 16);
+  const current = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const start = new Date(PLAN_START.getFullYear(), PLAN_START.getMonth(), PLAN_START.getDate());
+  const diffDays = Math.floor((current - start) / (1000 * 60 * 60 * 24));
+  if (diffDays < 0) return 0;
+  return Math.min(Math.floor(diffDays / 7) + 1, 16);
 }
 
 function getAllTaskIds() {
   const ids = [];
-  STUDY_PLAN.forEach(m => m.weeks.forEach(w => w.tasks.forEach(t => ids.push(t.id))));
+  STUDY_PLAN.forEach(m => m.weeks.forEach(w => w.days.forEach(d => d.tasks.forEach(t => ids.push(t.id)))));
   return ids;
 }
 
@@ -214,12 +494,11 @@ function getCompletionStats(state) {
 
 function getMonthStats(month, state) {
   const tasks = [];
-  month.weeks.forEach(w => w.tasks.forEach(t => tasks.push(t.id)));
+  month.weeks.forEach(w => w.days.forEach(d => d.tasks.forEach(t => tasks.push(t.id))));
   const done = tasks.filter(id => state[id]);
   return { total: tasks.length, done: done.length, pct: tasks.length ? Math.round((done.length / tasks.length) * 100) : 0 };
 }
 
-// ─── Rendering ───
 function renderClock() {
   const el = document.getElementById('live-clock');
   const now = new Date();
@@ -256,7 +535,6 @@ function renderStudyPlan(state) {
   const container = document.getElementById('study-plan');
   container.innerHTML = '';
   const currentWeek = getCurrentWeek();
-  let globalWeek = 0;
 
   STUDY_PLAN.forEach((month, mi) => {
     const mStats = getMonthStats(month, state);
@@ -278,22 +556,27 @@ function renderStudyPlan(state) {
       </div>
       <div class="month-content ${expanded ? 'open' : ''}">
         ${month.weeks.map((week, wi) => {
-      globalWeek++;
-      const wk = mi * 4 + wi + 1;
-      const isCurrent = wk === currentWeek;
-      return `
-            <div class="week-group">
-              <div class="week-label ${isCurrent ? 'current-week' : ''}">${isCurrent ? '▸ ' : ''}${week.label}${isCurrent ? ' (atual)' : ''}</div>
-              ${week.tasks.map(task => {
-        const checked = !!state[task.id];
-        return `
-                  <div class="task-item ${checked ? 'checked' : ''}" data-task="${task.id}">
-                    <div class="task-checkbox ${checked ? 'checked' : ''}">✓</div>
-                    <span class="task-text">${task.text} <span class="task-tag tag-${task.tag}">${task.tag.toUpperCase()}</span></span>
-                  </div>`;
-      }).join('')}
-            </div>`;
-    }).join('')}
+          const globalWeek = (mi * 4) + wi + 1;
+          const isCurrentWk = globalWeek === currentWeek;
+          return `
+            <div class="week-group" style="margin-bottom: 20px;">
+              <div class="week-title">${week.label} ${isCurrentWk ? '<span style="color:var(--accent-green)">(Atual)</span>' : ''}</div>
+              ${week.days.map(day => `
+                <div class="day-group">
+                  <div class="day-label">${day.label}</div>
+                  ${day.tasks.map(task => {
+                    const checked = !!state[task.id];
+                    return `
+                      <div class="task-item ${checked ? 'checked' : ''}" data-task="${task.id}">
+                        <div class="task-checkbox ${checked ? 'checked' : ''}">✓</div>
+                        <span class="task-text">${task.text} <span class="task-tag tag-${task.tag}">${task.tag.toUpperCase()}</span></span>
+                      </div>`;
+                  }).join('')}
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }).join('')}
       </div>`;
 
     container.appendChild(block);
@@ -323,7 +606,7 @@ function renderStudyPlan(state) {
       renderStudyPlan(s);
       renderOverallProgress(s);
       renderStats(s);
-      addLog(s[id] ? 'ok' : 'warn', s[id] ? `Task ${id} concluída` : `Task ${id} desmarcada`);
+      addLog(s[id] ? 'ok' : 'warn', s[id] ? `Task ${id} concluída` : `Task ${id} reaberta`);
     });
   });
 }
@@ -349,8 +632,7 @@ function renderLegend() {
     { label: 'Terraform', color: '#7b42bc' },
     { label: 'Linux', color: '#ffd700' },
     { label: 'CI/CD', color: '#00ff41' },
-    { label: 'SRE', color: '#ff3366' },
-    { label: 'Multi-Cloud', color: '#00d4ff' },
+    { label: 'ITSM', color: '#4b8ffd' },
   ];
   const container = document.getElementById('legend');
   container.innerHTML = tags.map(t => `
@@ -361,7 +643,6 @@ function renderLegend() {
   `).join('');
 }
 
-// ─── Terminal Log ───
 const logLines = [];
 function addLog(level, msg) {
   const now = new Date();
@@ -383,7 +664,6 @@ function renderLog() {
   container.scrollTop = container.scrollHeight;
 }
 
-// ─── Init ───
 document.addEventListener('DOMContentLoaded', () => {
   const state = loadState();
 
@@ -396,18 +676,17 @@ document.addEventListener('DOMContentLoaded', () => {
   renderDailyRoutine();
   renderLegend();
 
-  addLog('info', 'Dashboard CloudOps inicializado');
+  addLog('info', 'Dashboard Atualizado (High Density Total)');
   addLog('info', `Semana atual: ${getCurrentWeek() || 'pré-início'}`);
-  addLog('ok', 'Sistema de persistência localStorage ativo');
 
   document.getElementById('reset-btn').addEventListener('click', () => {
-    if (confirm('⚠️ Resetar todo o progresso? Esta ação não pode ser desfeita.')) {
+    if (confirm('⚠️ Resetar todo o board?')) {
       localStorage.removeItem(STORAGE_KEY);
       const s = loadState();
       renderStudyPlan(s);
       renderOverallProgress(s);
       renderStats(s);
-      addLog('warn', 'Progresso resetado');
+      addLog('warn', 'Board resetado pelo usuário');
     }
   });
 });
