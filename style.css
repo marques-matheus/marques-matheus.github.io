@@ -628,3 +628,6 @@ body::before {
 .month-content.open { 
   max-height: 8000px !important; 
 }
+
+.tag-project { background: rgba(255, 95, 95, 0.2); color: #ff5f5f; border: 1px solid rgba(255, 95, 95, 0.3); }
+.tag-review { background: rgba(168, 230, 207, 0.2); color: #a8e6cf; border: 1px solid rgba(168, 230, 207, 0.3); }
